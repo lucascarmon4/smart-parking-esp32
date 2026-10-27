@@ -2,10 +2,11 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Vaga;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin \App\Models\Vaga */
+/** @mixin Vaga */
 class VagaResource extends JsonResource
 {
     /**
