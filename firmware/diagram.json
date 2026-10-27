@@ -1,0 +1,428 @@
+{
+  "version": 1,
+  "author": "Sistemas Embarcados - Unisantos",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "sensor1",
+      "top": -260,
+      "left": -420,
+      "attrs": {
+        "distance": "200"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "verde1",
+      "top": -140,
+      "left": -380,
+      "attrs": {
+        "color": "green",
+        "label": "V1"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "vermelho1",
+      "top": -140,
+      "left": -340,
+      "attrs": {
+        "color": "red",
+        "label": "V1"
+      }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "sensor2",
+      "top": -260,
+      "left": -230,
+      "attrs": {
+        "distance": "200"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "verde2",
+      "top": -140,
+      "left": -190,
+      "attrs": {
+        "color": "green",
+        "label": "V2"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "vermelho2",
+      "top": -140,
+      "left": -150,
+      "attrs": {
+        "color": "red",
+        "label": "V2"
+      }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "sensor3",
+      "top": -260,
+      "left": -40,
+      "attrs": {
+        "distance": "200"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "verde3",
+      "top": -140,
+      "left": 0,
+      "attrs": {
+        "color": "green",
+        "label": "V3"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "vermelho3",
+      "top": -140,
+      "left": 40,
+      "attrs": {
+        "color": "red",
+        "label": "V3"
+      }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "sensor4",
+      "top": -260,
+      "left": 150,
+      "attrs": {
+        "distance": "200"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "verde4",
+      "top": -140,
+      "left": 190,
+      "attrs": {
+        "color": "green",
+        "label": "V4"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "vermelho4",
+      "top": -140,
+      "left": 230,
+      "attrs": {
+        "color": "red",
+        "label": "V4"
+      }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "sensorEntrada",
+      "top": 40,
+      "left": 300,
+      "attrs": {
+        "distance": "200"
+      }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "cancela",
+      "top": 180,
+      "left": 300,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": 260,
+      "left": -340,
+      "attrs": {
+        "pins": "i2c"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:TX",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp:RX",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+    [
+      "sensor1:VCC",
+      "esp:5V",
+      "red",
+      []
+    ],
+    [
+      "sensor1:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "sensor1:TRIG",
+      "esp:5",
+      "orange",
+      []
+    ],
+    [
+      "sensor1:ECHO",
+      "esp:34",
+      "purple",
+      []
+    ],
+    [
+      "verde1:A",
+      "esp:13",
+      "green",
+      []
+    ],
+    [
+      "verde1:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "vermelho1:A",
+      "esp:12",
+      "red",
+      []
+    ],
+    [
+      "vermelho1:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "sensor2:VCC",
+      "esp:5V",
+      "red",
+      []
+    ],
+    [
+      "sensor2:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "sensor2:TRIG",
+      "esp:18",
+      "orange",
+      []
+    ],
+    [
+      "sensor2:ECHO",
+      "esp:35",
+      "purple",
+      []
+    ],
+    [
+      "verde2:A",
+      "esp:14",
+      "green",
+      []
+    ],
+    [
+      "verde2:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "vermelho2:A",
+      "esp:27",
+      "red",
+      []
+    ],
+    [
+      "vermelho2:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "sensor3:VCC",
+      "esp:5V",
+      "red",
+      []
+    ],
+    [
+      "sensor3:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "sensor3:TRIG",
+      "esp:19",
+      "orange",
+      []
+    ],
+    [
+      "sensor3:ECHO",
+      "esp:VP",
+      "purple",
+      []
+    ],
+    [
+      "verde3:A",
+      "esp:26",
+      "green",
+      []
+    ],
+    [
+      "verde3:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "vermelho3:A",
+      "esp:25",
+      "red",
+      []
+    ],
+    [
+      "vermelho3:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "sensor4:VCC",
+      "esp:5V",
+      "red",
+      []
+    ],
+    [
+      "sensor4:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "sensor4:TRIG",
+      "esp:23",
+      "orange",
+      []
+    ],
+    [
+      "sensor4:ECHO",
+      "esp:VN",
+      "purple",
+      []
+    ],
+    [
+      "verde4:A",
+      "esp:33",
+      "green",
+      []
+    ],
+    [
+      "verde4:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "vermelho4:A",
+      "esp:32",
+      "red",
+      []
+    ],
+    [
+      "vermelho4:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "sensorEntrada:VCC",
+      "esp:5V",
+      "red",
+      []
+    ],
+    [
+      "sensorEntrada:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "sensorEntrada:TRIG",
+      "esp:17",
+      "orange",
+      []
+    ],
+    [
+      "sensorEntrada:ECHO",
+      "esp:16",
+      "purple",
+      []
+    ],
+    [
+      "cancela:V+",
+      "esp:5V",
+      "red",
+      []
+    ],
+    [
+      "cancela:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "cancela:PWM",
+      "esp:4",
+      "blue",
+      []
+    ],
+    [
+      "lcd:VCC",
+      "esp:5V",
+      "red",
+      []
+    ],
+    [
+      "lcd:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "lcd:SDA",
+      "esp:21",
+      "green",
+      []
+    ],
+    [
+      "lcd:SCL",
+      "esp:22",
+      "yellow",
+      []
+    ]
+  ],
+  "dependencies": {}
+}

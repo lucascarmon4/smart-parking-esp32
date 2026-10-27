@@ -1,0 +1,12 @@
+{
+    "folders": [
+        { "name": "firmware", "path": "firmware" },
+        { "name": "backend", "path": "backend" }
+    ],
+    "extensions": {
+        "recommendations": [
+            "platformio.platformio-ide",
+            "wokwi.wokwi-vscode"
+        ]
+    }
+}
