@@ -1,7 +1,6 @@
 {
     "folders": [
-        { "name": "firmware", "path": "firmware" },
-        { "name": "backend", "path": "backend" }
+        { "name": "firmware", "path": "firmware" }
     ],
     "extensions": {
         "recommendations": [
