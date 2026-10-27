@@ -4,224 +4,211 @@
   "editor": "wokwi",
   "parts": [
     {
-      "type": "board-esp32-devkit-c-v4",
-      "id": "esp",
-      "top": 0,
-      "left": 0,
-      "attrs": {}
-    },
-    {
-      "type": "wokwi-hc-sr04",
-      "id": "vaga1",
-      "top": -360,
-      "left": -420,
-      "attrs": {
-        "distance": "200"
-      }
-    },
-    {
-      "type": "wokwi-led",
-      "id": "verde1",
-      "top": -230,
-      "left": -370,
-      "attrs": {
-        "color": "green"
-      }
-    },
-    {
-      "type": "wokwi-resistor",
-      "id": "r_verde1",
-      "top": -140,
-      "left": -390,
-      "rotate": 90,
-      "attrs": {
-        "value": "220"
-      }
-    },
-    {
-      "type": "wokwi-led",
-      "id": "vermelho1",
-      "top": -230,
-      "left": -320,
-      "attrs": {
-        "color": "red"
-      }
-    },
-    {
-      "type": "wokwi-resistor",
-      "id": "r_vermelho1",
-      "top": -140,
-      "left": -340,
-      "rotate": 90,
-      "attrs": {
-        "value": "220"
-      }
-    },
-    {
-      "type": "wokwi-hc-sr04",
-      "id": "vaga2",
-      "top": -360,
-      "left": -220,
-      "attrs": {
-        "distance": "200"
-      }
-    },
-    {
-      "type": "wokwi-led",
-      "id": "verde2",
-      "top": -230,
-      "left": -170,
-      "attrs": {
-        "color": "green"
-      }
-    },
-    {
-      "type": "wokwi-resistor",
-      "id": "r_verde2",
-      "top": -140,
-      "left": -190,
-      "rotate": 90,
-      "attrs": {
-        "value": "220"
-      }
-    },
-    {
-      "type": "wokwi-led",
-      "id": "vermelho2",
-      "top": -230,
-      "left": -120,
-      "attrs": {
-        "color": "red"
-      }
-    },
-    {
-      "type": "wokwi-resistor",
-      "id": "r_vermelho2",
-      "top": -140,
-      "left": -140,
-      "rotate": 90,
-      "attrs": {
-        "value": "220"
-      }
-    },
-    {
-      "type": "wokwi-hc-sr04",
-      "id": "vaga3",
-      "top": -360,
-      "left": -20,
-      "attrs": {
-        "distance": "200"
-      }
-    },
-    {
-      "type": "wokwi-led",
-      "id": "verde3",
-      "top": -230,
-      "left": 30,
-      "attrs": {
-        "color": "green"
-      }
-    },
-    {
-      "type": "wokwi-resistor",
-      "id": "r_verde3",
-      "top": -140,
-      "left": 10,
-      "rotate": 90,
-      "attrs": {
-        "value": "220"
-      }
-    },
-    {
-      "type": "wokwi-led",
-      "id": "vermelho3",
-      "top": -230,
-      "left": 80,
-      "attrs": {
-        "color": "red"
-      }
-    },
-    {
-      "type": "wokwi-resistor",
-      "id": "r_vermelho3",
-      "top": -140,
-      "left": 60,
-      "rotate": 90,
-      "attrs": {
-        "value": "220"
-      }
-    },
-    {
-      "type": "wokwi-hc-sr04",
-      "id": "vaga4",
-      "top": -360,
-      "left": 180,
-      "attrs": {
-        "distance": "200"
-      }
-    },
-    {
-      "type": "wokwi-led",
-      "id": "verde4",
-      "top": -230,
-      "left": 230,
-      "attrs": {
-        "color": "green"
-      }
-    },
-    {
-      "type": "wokwi-resistor",
-      "id": "r_verde4",
-      "top": -140,
-      "left": 210,
-      "rotate": 90,
-      "attrs": {
-        "value": "220"
-      }
-    },
-    {
-      "type": "wokwi-led",
-      "id": "vermelho4",
-      "top": -230,
-      "left": 280,
-      "attrs": {
-        "color": "red"
-      }
-    },
-    {
-      "type": "wokwi-resistor",
-      "id": "r_vermelho4",
-      "top": -140,
-      "left": 260,
-      "rotate": 90,
-      "attrs": {
-        "value": "220"
-      }
-    },
-    {
       "type": "wokwi-hc-sr04",
       "id": "entrada",
-      "top": 20,
-      "left": 260,
+      "top": 0,
+      "left": 0,
       "attrs": {
         "distance": "200"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txt_entrada",
+      "top": -28,
+      "left": 55,
+      "attrs": {
+        "text": "Entrada"
       }
     },
     {
       "type": "wokwi-servo",
       "id": "cancela",
-      "top": 180,
-      "left": 260,
+      "top": 0,
+      "left": 230,
       "attrs": {}
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txt_cancela",
+      "top": -28,
+      "left": 285,
+      "attrs": {
+        "text": "Cancela"
+      }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "vaga1",
+      "top": 0,
+      "left": 430,
+      "attrs": {
+        "distance": "200"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txt_vaga1",
+      "top": -28,
+      "left": 485,
+      "attrs": {
+        "text": "Vaga 1"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 105,
+      "left": 450,
+      "attrs": {
+        "color": "green"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 195.73,
+      "left": 420.6,
+      "attrs": {
+        "value": "220"
+      },
+      "rotate": 90
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "vaga2",
+      "top": 0,
+      "left": 630,
+      "attrs": {
+        "distance": "200"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txt_vaga2",
+      "top": -28,
+      "left": 685,
+      "attrs": {
+        "text": "Vaga 2"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 105,
+      "left": 650,
+      "attrs": {
+        "color": "green"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 195.73,
+      "left": 620.6,
+      "attrs": {
+        "value": "220"
+      },
+      "rotate": 90
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "vaga3",
+      "top": 0,
+      "left": 1200,
+      "attrs": {
+        "distance": "200"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txt_vaga3",
+      "top": -28,
+      "left": 1255,
+      "attrs": {
+        "text": "Vaga 3"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": 105,
+      "left": 1220,
+      "attrs": {
+        "color": "green"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 195.73,
+      "left": 1190.6,
+      "attrs": {
+        "value": "220"
+      },
+      "rotate": 90
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "vaga4",
+      "top": 0,
+      "left": 1400,
+      "attrs": {
+        "distance": "200"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txt_vaga4",
+      "top": -28,
+      "left": 1455,
+      "attrs": {
+        "text": "Vaga 4"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led4",
+      "top": 105,
+      "left": 1420,
+      "attrs": {
+        "color": "green"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r4",
+      "top": 195.73,
+      "left": 1390.6,
+      "attrs": {
+        "value": "220"
+      },
+      "rotate": 90
     },
     {
       "type": "wokwi-lcd1602",
       "id": "lcd",
-      "top": 60,
-      "left": -420,
+      "top": 0,
+      "left": 870,
       "attrs": {
         "pins": "i2c"
       }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txt_lcd",
+      "top": -28,
+      "left": 995,
+      "attrs": {
+        "text": "Painel"
+      }
+    },
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 300,
+      "left": 840,
+      "attrs": {}
     }
   ],
   "connections": [
@@ -238,310 +225,395 @@
       []
     ],
     [
-      "vaga1:VCC",
-      "esp:5V",
-      "red",
-      []
+      "led1:C",
+      "r1:1",
+      "black",
+      [
+        "v11",
+        "h-15"
+      ]
+    ],
+    [
+      "led2:C",
+      "r2:1",
+      "black",
+      [
+        "v11",
+        "h-15"
+      ]
+    ],
+    [
+      "led3:C",
+      "r3:1",
+      "black",
+      [
+        "v11",
+        "h-15"
+      ]
+    ],
+    [
+      "led4:C",
+      "r4:1",
+      "black",
+      [
+        "v11",
+        "h-15"
+      ]
+    ],
+    [
+      "entrada:GND",
+      "cancela:GND",
+      "black",
+      [
+        "v150.5",
+        "h98.7",
+        "v-195"
+      ]
+    ],
+    [
+      "cancela:GND",
+      "r1:2",
+      "black",
+      [
+        "h-30",
+        "v195",
+        "h250",
+        "v-14.2"
+      ]
+    ],
+    [
+      "r1:2",
+      "vaga1:GND",
+      "black",
+      [
+        "v14.2",
+        "h81.3",
+        "v-150.5"
+      ]
     ],
     [
       "vaga1:GND",
-      "esp:GND.2",
+      "r2:2",
       "black",
-      []
+      [
+        "v150.5",
+        "h118.7",
+        "v-14.2"
+      ]
     ],
     [
-      "vaga1:TRIG",
-      "esp:5",
-      "orange",
-      []
-    ],
-    [
-      "vaga1:ECHO",
-      "esp:34",
-      "purple",
-      []
-    ],
-    [
-      "esp:13",
-      "r_verde1:2",
-      "green",
-      []
-    ],
-    [
-      "r_verde1:1",
-      "verde1:A",
-      "green",
-      []
-    ],
-    [
-      "verde1:C",
-      "esp:GND.1",
+      "r2:2",
+      "vaga2:GND",
       "black",
-      []
-    ],
-    [
-      "esp:12",
-      "r_vermelho1:2",
-      "red",
-      []
-    ],
-    [
-      "r_vermelho1:1",
-      "vermelho1:A",
-      "red",
-      []
-    ],
-    [
-      "vermelho1:C",
-      "esp:GND.1",
-      "black",
-      []
-    ],
-    [
-      "vaga2:VCC",
-      "esp:5V",
-      "red",
-      []
+      [
+        "v14.2",
+        "h81.3",
+        "v-150.5"
+      ]
     ],
     [
       "vaga2:GND",
-      "esp:GND.2",
+      "lcd:GND",
       "black",
-      []
+      [
+        "v150.5",
+        "h106.7",
+        "v-213"
+      ]
     ],
     [
-      "vaga2:TRIG",
-      "esp:18",
-      "orange",
-      []
-    ],
-    [
-      "vaga2:ECHO",
-      "esp:35",
-      "purple",
-      []
-    ],
-    [
-      "esp:14",
-      "r_verde2:2",
-      "green",
-      []
-    ],
-    [
-      "r_verde2:1",
-      "verde2:A",
-      "green",
-      []
-    ],
-    [
-      "verde2:C",
-      "esp:GND.1",
+      "lcd:GND",
+      "r3:2",
       "black",
-      []
+      [
+        "h-36",
+        "v213",
+        "h382",
+        "v-14.2"
+      ]
     ],
     [
-      "esp:27",
-      "r_vermelho2:2",
-      "red",
-      []
-    ],
-    [
-      "r_vermelho2:1",
-      "vermelho2:A",
-      "red",
-      []
-    ],
-    [
-      "vermelho2:C",
-      "esp:GND.1",
+      "r3:2",
+      "vaga3:GND",
       "black",
-      []
-    ],
-    [
-      "vaga3:VCC",
-      "esp:5V",
-      "red",
-      []
+      [
+        "v14.2",
+        "h81.3",
+        "v-150.5"
+      ]
     ],
     [
       "vaga3:GND",
-      "esp:GND.2",
+      "r4:2",
       "black",
-      []
+      [
+        "v150.5",
+        "h118.7",
+        "v-14.2"
+      ]
     ],
     [
-      "vaga3:TRIG",
-      "esp:19",
-      "orange",
-      []
-    ],
-    [
-      "vaga3:ECHO",
-      "esp:VP",
-      "purple",
-      []
-    ],
-    [
-      "esp:26",
-      "r_verde3:2",
-      "green",
-      []
-    ],
-    [
-      "r_verde3:1",
-      "verde3:A",
-      "green",
-      []
-    ],
-    [
-      "verde3:C",
-      "esp:GND.1",
-      "black",
-      []
-    ],
-    [
-      "esp:25",
-      "r_vermelho3:2",
-      "red",
-      []
-    ],
-    [
-      "r_vermelho3:1",
-      "vermelho3:A",
-      "red",
-      []
-    ],
-    [
-      "vermelho3:C",
-      "esp:GND.1",
-      "black",
-      []
-    ],
-    [
-      "vaga4:VCC",
-      "esp:5V",
-      "red",
-      []
-    ],
-    [
+      "r4:2",
       "vaga4:GND",
-      "esp:GND.2",
       "black",
-      []
+      [
+        "v14.2",
+        "h81.3",
+        "v-150.5"
+      ]
     ],
     [
-      "vaga4:TRIG",
-      "esp:23",
-      "orange",
-      []
-    ],
-    [
-      "vaga4:ECHO",
-      "esp:VN",
-      "purple",
-      []
-    ],
-    [
-      "esp:33",
-      "r_verde4:2",
-      "green",
-      []
-    ],
-    [
-      "r_verde4:1",
-      "verde4:A",
-      "green",
-      []
-    ],
-    [
-      "verde4:C",
-      "esp:GND.1",
-      "black",
-      []
-    ],
-    [
-      "esp:32",
-      "r_vermelho4:2",
+      "entrada:VCC",
+      "cancela:V+",
       "red",
-      []
+      [
+        "v165.5",
+        "h138.7",
+        "v-200.5"
+      ]
     ],
     [
-      "r_vermelho4:1",
-      "vermelho4:A",
+      "cancela:V+",
+      "vaga1:VCC",
       "red",
-      []
+      [
+        "h-20",
+        "v200.5",
+        "h291.3",
+        "v-165.5"
+      ]
     ],
     [
-      "vermelho4:C",
-      "esp:GND.1",
-      "black",
-      []
+      "vaga1:VCC",
+      "vaga2:VCC",
+      "red",
+      [
+        "v165.5",
+        "h200.0",
+        "v-165.5"
+      ]
+    ],
+    [
+      "vaga2:VCC",
+      "lcd:VCC",
+      "red",
+      [
+        "v165.5",
+        "h144.7",
+        "v-218.5"
+      ]
+    ],
+    [
+      "lcd:VCC",
+      "vaga3:VCC",
+      "red",
+      [
+        "h-28",
+        "v218.5",
+        "h425.3",
+        "v-165.5"
+      ]
+    ],
+    [
+      "vaga3:VCC",
+      "vaga4:VCC",
+      "red",
+      [
+        "v165.5",
+        "h200.0",
+        "v-165.5"
+      ]
     ],
     [
       "entrada:VCC",
       "esp:5V",
       "red",
-      []
+      [
+        "v407.1"
+      ]
     ],
     [
-      "entrada:GND",
-      "esp:GND.2",
-      "black",
-      []
-    ],
-    [
-      "entrada:TRIG",
-      "esp:17",
-      "orange",
-      []
-    ],
-    [
-      "entrada:ECHO",
-      "esp:16",
+      "vaga2:ECHO",
+      "esp:35",
       "purple",
-      []
+      [
+        "v197.5",
+        "h98.7",
+        "v84.8"
+      ]
     ],
     [
-      "cancela:V+",
-      "esp:5V",
-      "red",
-      []
+      "vaga2:TRIG",
+      "esp:32",
+      "orange",
+      [
+        "v207.5",
+        "h98.7",
+        "v84.4"
+      ]
     ],
     [
-      "cancela:GND",
-      "esp:GND.2",
-      "black",
-      []
+      "led2:A",
+      "esp:33",
+      "green",
+      [
+        "v165",
+        "h125",
+        "v84.0"
+      ]
+    ],
+    [
+      "vaga1:ECHO",
+      "esp:25",
+      "purple",
+      [
+        "v227.5",
+        "h268.7",
+        "v83.6"
+      ]
+    ],
+    [
+      "vaga1:TRIG",
+      "esp:26",
+      "orange",
+      [
+        "v237.5",
+        "h268.7",
+        "v83.2"
+      ]
+    ],
+    [
+      "led1:A",
+      "esp:27",
+      "green",
+      [
+        "v195",
+        "h295",
+        "v82.8"
+      ]
     ],
     [
       "cancela:PWM",
-      "esp:4",
+      "esp:14",
       "blue",
-      []
+      [
+        "h-10",
+        "v283",
+        "h540",
+        "v82.4"
+      ]
     ],
     [
-      "lcd:VCC",
-      "esp:5V",
-      "red",
-      []
+      "entrada:ECHO",
+      "esp:12",
+      "purple",
+      [
+        "v267.5",
+        "h658.7",
+        "v82.0"
+      ]
     ],
     [
-      "lcd:GND",
-      "esp:GND.1",
-      "black",
-      []
-    ],
-    [
-      "lcd:SDA",
-      "esp:21",
-      "green",
-      []
+      "entrada:TRIG",
+      "esp:13",
+      "orange",
+      [
+        "v277.5",
+        "h658.7",
+        "v91.2"
+      ]
     ],
     [
       "lcd:SCL",
       "esp:22",
       "yellow",
-      []
+      [
+        "h-12",
+        "v209.5",
+        "h103.8",
+        "v78.0"
+      ]
+    ],
+    [
+      "lcd:SDA",
+      "esp:21",
+      "green",
+      [
+        "h-20",
+        "v229",
+        "h121.8",
+        "v96.8"
+      ]
+    ],
+    [
+      "r3:2",
+      "esp:GND.3",
+      "black",
+      [
+        "v14.2",
+        "h-234.2",
+        "v141.4"
+      ]
+    ],
+    [
+      "led3:A",
+      "esp:19",
+      "green",
+      [
+        "v145",
+        "h-249.2",
+        "v104.0"
+      ]
+    ],
+    [
+      "vaga3:TRIG",
+      "esp:18",
+      "orange",
+      [
+        "v207.5",
+        "h-275.5",
+        "v103.6"
+      ]
+    ],
+    [
+      "vaga3:ECHO",
+      "esp:5",
+      "purple",
+      [
+        "v217.5",
+        "h-275.5",
+        "v103.2"
+      ]
+    ],
+    [
+      "led4:A",
+      "esp:17",
+      "green",
+      [
+        "v175",
+        "h-419.2",
+        "v102.8"
+      ]
+    ],
+    [
+      "vaga4:TRIG",
+      "esp:16",
+      "orange",
+      [
+        "v237.5",
+        "h-445.5",
+        "v102.4"
+      ]
+    ],
+    [
+      "vaga4:ECHO",
+      "esp:4",
+      "purple",
+      [
+        "v247.5",
+        "h-445.5",
+        "v102.0"
+      ]
     ]
   ],
   "dependencies": {}

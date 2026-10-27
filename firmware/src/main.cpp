@@ -1,5 +1,5 @@
 // Teste de bancada do circuito: confirma que cada peça do diagram.json responde.
-//   - sensor da vaga < 10 cm  → LED vermelho; senão LED verde
+//   - sensor da vaga < 10 cm  → vaga ocupada, LED verde apaga; senão fica aceso
 //   - sensor da entrada < 15 cm e há vaga livre → cancela (servo) abre
 //   - LCD mostra vagas livres e o estado da cancela
 
@@ -10,22 +10,21 @@
 struct Vaga {
     uint8_t trig;
     uint8_t echo;
-    uint8_t ledVerde;
-    uint8_t ledVermelho;
+    uint8_t led;
 };
 
-// Os ECHO usam 34, 35, 36 (VP) e 39 (VN): pinos só de entrada, que sobram no ESP32.
+// Vagas 1 e 2 ligam no lado esquerdo do ESP32; vagas 3 e 4, no lado direito.
 const Vaga VAGAS[] = {
-    {5, 34, 13, 12},
-    {18, 35, 14, 27},
-    {19, 36, 26, 25},
-    {23, 39, 33, 32},
+    {26, 25, 27},
+    {32, 35, 33},
+    {18, 5, 19},
+    {16, 4, 17},
 };
 const size_t TOTAL_VAGAS = sizeof(VAGAS) / sizeof(VAGAS[0]);
 
-const uint8_t ENTRADA_TRIG = 17;
-const uint8_t ENTRADA_ECHO = 16;
-const uint8_t SERVO_PWM = 4;
+const uint8_t ENTRADA_TRIG = 13;
+const uint8_t ENTRADA_ECHO = 12;  // pino de boot: precisa estar em LOW ao ligar, e o ECHO parado fica em LOW
+const uint8_t SERVO_PWM = 14;
 
 const int VAGA_OCUPADA_CM = 10;
 const int CARRO_NA_ENTRADA_CM = 15;
@@ -56,8 +55,7 @@ void setup() {
     for (const Vaga& vaga : VAGAS) {
         pinMode(vaga.trig, OUTPUT);
         pinMode(vaga.echo, INPUT);
-        pinMode(vaga.ledVerde, OUTPUT);
-        pinMode(vaga.ledVermelho, OUTPUT);
+        pinMode(vaga.led, OUTPUT);
     }
     pinMode(ENTRADA_TRIG, OUTPUT);
     pinMode(ENTRADA_ECHO, INPUT);
@@ -79,8 +77,7 @@ void loop() {
         int distancia = medirCm(vaga.trig, vaga.echo);
         bool ocupada = distancia >= 0 && distancia < VAGA_OCUPADA_CM;
 
-        digitalWrite(vaga.ledVerde, ocupada ? LOW : HIGH);
-        digitalWrite(vaga.ledVermelho, ocupada ? HIGH : LOW);
+        digitalWrite(vaga.led, ocupada ? LOW : HIGH);
         if (!ocupada) {
             livres++;
         }
