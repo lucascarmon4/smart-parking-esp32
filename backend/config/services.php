@@ -18,6 +18,10 @@ return [
         'key' => env('POSTMARK_API_KEY'),
     ],
 
+    'esp32' => [
+        'token' => env('ESP32_TOKEN'),
+    ],
+
     'resend' => [
         'key' => env('RESEND_API_KEY'),
     ],
