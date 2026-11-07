@@ -1,11 +1,24 @@
-// Teste de bancada do circuito: confirma que cada peça do diagram.json responde.
+// Estacionamento inteligente: lê os sensores, acende os LEDs, controla a cancela,
+// mostra o resumo no LCD e envia o estado para o backend Laravel por Wi-Fi.
 //   - sensor da vaga < 10 cm  → vaga ocupada, LED verde apaga; senão fica aceso
 //   - sensor da entrada < 15 cm e há vaga livre → cancela (servo) abre
-//   - LCD mostra vagas livres e o estado da cancela
+//   - a cada mudança (e a cada 5 s, para o dashboard saber que está online) → POST /api/telemetria
 
 #include <Arduino.h>
+#include <ArduinoJson.h>
 #include <ESP32Servo.h>
+#include <HTTPClient.h>
 #include <LiquidCrystal_I2C.h>
+#include <WiFi.h>
+
+// Rede aberta do simulador Wokwi. "host.wokwi.internal" é o localhost do computador
+// que está rodando o simulador, onde o `php artisan serve` atende na porta 8000.
+const char* WIFI_REDE = "Wokwi-GUEST";
+const char* WIFI_SENHA = "";
+const char* URL_TELEMETRIA = "http://host.wokwi.internal:8000/api/telemetria";
+const char* TOKEN = "smart-parking-dev";  // igual ao ESP32_TOKEN do backend/.env
+
+const unsigned long ENVIO_PERIODICO_MS = 5000;
 
 struct Vaga {
     uint8_t trig;
@@ -34,6 +47,12 @@ const int CANCELA_ABERTA = 90;
 LiquidCrystal_I2C lcd(0x27, 16, 2);  // SDA 21, SCL 22 (padrão do ESP32)
 Servo cancela;
 
+// Última leitura de cada vaga e da cancela: é o que vai para o backend.
+int distancias[TOTAL_VAGAS];
+bool ocupadas[TOTAL_VAGAS];
+bool cancelaAberta = false;
+unsigned long ultimoEnvio = 0;
+
 // Dispara o HC-SR04 e converte o tempo do eco em cm. Retorna -1 se não houve eco.
 int medirCm(uint8_t trig, uint8_t echo) {
     digitalWrite(trig, LOW);
@@ -47,6 +66,62 @@ int medirCm(uint8_t trig, uint8_t echo) {
         return -1;
     }
     return duracaoUs / 58;  // som a 343 m/s, ida e volta
+}
+
+// Tenta conectar por até 10 s. Se não der, o estacionamento funciona igual, só sem enviar dados.
+void conectarWifi() {
+    lcd.setCursor(0, 0);
+    lcd.print("Conectando WiFi ");
+    Serial.print("Conectando ao Wi-Fi");
+
+    WiFi.begin(WIFI_REDE, WIFI_SENHA, 6);  // canal 6 acelera a conexão no Wokwi
+    unsigned long inicio = millis();
+    while (WiFi.status() != WL_CONNECTED && millis() - inicio < 10000) {
+        delay(250);
+        Serial.print(".");
+    }
+
+    Serial.println(WiFi.status() == WL_CONNECTED ? " conectado!" : " falhou (seguindo sem rede)");
+    lcd.clear();
+}
+
+// Monta o JSON com o estado atual e faz o POST para o backend.
+//   {"vagas":[{"numero":1,"ocupada":false,"distancia_cm":200}, ...],"cancela_aberta":false}
+void enviarTelemetria() {
+    if (WiFi.status() != WL_CONNECTED) {
+        Serial.println("telemetria: sem Wi-Fi");
+        return;
+    }
+
+    JsonDocument json;
+    JsonArray vagas = json["vagas"].to<JsonArray>();
+    for (size_t i = 0; i < TOTAL_VAGAS; i++) {
+        JsonObject vaga = vagas.add<JsonObject>();
+        vaga["numero"] = i + 1;
+        vaga["ocupada"] = ocupadas[i];
+        if (distancias[i] >= 0) {
+            vaga["distancia_cm"] = distancias[i];
+        } else {
+            vaga["distancia_cm"] = nullptr;  // sensor não respondeu
+        }
+    }
+    json["cancela_aberta"] = cancelaAberta;
+
+    String corpo;
+    serializeJson(json, corpo);
+
+    // Timeouts curtos: se o backend estiver fora do ar, o loop não trava os sensores.
+    HTTPClient http;
+    http.setConnectTimeout(1000);
+    http.setTimeout(1000);
+    http.begin(URL_TELEMETRIA);
+    http.addHeader("Content-Type", "application/json");
+    http.addHeader("Accept", "application/json");
+    http.addHeader("X-Device-Token", TOKEN);
+    int status = http.POST(corpo);
+    http.end();
+
+    Serial.printf("telemetria: %s -> HTTP %d\n", corpo.c_str(), status);
 }
 
 void setup() {
@@ -66,11 +141,13 @@ void setup() {
     lcd.init();
     lcd.backlight();
 
-    Serial.println("Smart Parking - teste de bancada");
+    Serial.println("Smart Parking");
+    conectarWifi();
 }
 
 void loop() {
     size_t livres = 0;
+    bool mudou = false;
 
     for (size_t i = 0; i < TOTAL_VAGAS; i++) {
         const Vaga& vaga = VAGAS[i];
@@ -82,14 +159,17 @@ void loop() {
             livres++;
         }
 
-        Serial.printf("V%u: %4d cm %s | ", (unsigned)(i + 1), distancia, ocupada ? "X" : "-");
+        mudou = mudou || ocupada != ocupadas[i];
+        ocupadas[i] = ocupada;
+        distancias[i] = distancia;
     }
 
     int entrada = medirCm(ENTRADA_TRIG, ENTRADA_ECHO);
     bool abrir = entrada >= 0 && entrada < CARRO_NA_ENTRADA_CM && livres > 0;
     cancela.write(abrir ? CANCELA_ABERTA : CANCELA_FECHADA);
 
-    Serial.printf("entrada: %4d cm | livres: %u\n", entrada, (unsigned)livres);
+    mudou = mudou || abrir != cancelaAberta;
+    cancelaAberta = abrir;
 
     // Cada linha do LCD tem 16 colunas; os espaços no fim apagam o texto anterior.
     lcd.setCursor(0, 0);
@@ -100,6 +180,11 @@ void loop() {
     }
     lcd.setCursor(0, 1);
     lcd.print(abrir ? "Cancela: ABERTA " : "Cancela: fechada");
+
+    if (mudou || millis() - ultimoEnvio >= ENVIO_PERIODICO_MS) {
+        enviarTelemetria();
+        ultimoEnvio = millis();
+    }
 
     delay(200);
 }
