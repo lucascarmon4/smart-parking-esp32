@@ -1,0 +1,154 @@
+:root {
+    --fundo: #f3f4f6;
+    --cartao: #ffffff;
+    --texto: #111827;
+    --suave: #6b7280;
+    --livre: #16a34a;
+    --livre-fundo: #dcfce7;
+    --ocupada: #dc2626;
+    --ocupada-fundo: #fee2e2;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 24px 16px;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+header,
+main {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+h2 {
+    margin: 0 0 12px;
+    font-size: 18px;
+}
+
+p {
+    margin: 0;
+}
+
+/* Indicador do ESP32: cinza quando offline, verde quando online */
+.esp32 {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #e5e7eb;
+    color: var(--suave);
+    font-weight: 600;
+}
+
+.esp32.online {
+    background: var(--livre-fundo);
+    color: var(--livre);
+}
+
+.cartao {
+    padding: 20px;
+    border-radius: 12px;
+    background: var(--cartao);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+}
+
+.resumo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.rotulo {
+    color: var(--suave);
+    font-size: 14px;
+}
+
+.valor {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.vagas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.vaga {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid;
+}
+
+.vaga.livre {
+    border-color: var(--livre);
+    background: var(--livre-fundo);
+}
+
+.vaga.ocupada {
+    border-color: var(--ocupada);
+    background: var(--ocupada-fundo);
+}
+
+.vaga .status {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.vaga.livre .status {
+    color: var(--livre);
+}
+
+.vaga.ocupada .status {
+    color: var(--ocupada);
+}
+
+.vaga .distancia {
+    color: var(--suave);
+}
+
+.eventos {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.eventos li {
+    padding: 8px 0;
+    border-top: 1px solid #e5e7eb;
+}
+
+.eventos li:first-child {
+    border-top: none;
+}
+
+.eventos time {
+    margin-right: 8px;
+    color: var(--suave);
+    font-variant-numeric: tabular-nums;
+}
+
+.eventos .vazio {
+    color: var(--suave);
+}
